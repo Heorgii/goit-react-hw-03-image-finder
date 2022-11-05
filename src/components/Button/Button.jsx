@@ -1,10 +1,10 @@
 import css from './Button.module.css';
 import PropTypes from 'prop-types';
 
-export const Button =({onClick})=>{
-    return(
-        <button type='button' onClick={onClick} className={css.btn_load_more}>Load more</button>
-    );
+export default function Button ({onClick}){
+    return (
+        <button type="button" onClick={onClick} className = {css.button}>Load more</button>
+    )
 }
 
 Button.protoType ={

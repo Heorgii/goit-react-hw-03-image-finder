@@ -1,23 +1,15 @@
 import css from './Modal.module.css';
-import * as basicLightbox from 'basiclightbox'
-// import PropTypes from 'prop-types';
+import { Component } from 'react';
 
-const Modal = ({src}) => {
-    // return (
-    //     <div className={css.overlay}>
-    //         <div className={css.modal}>
-    //             {basicLightbox.create(`
-    //                 <img src=${src} alt=${alt} width="800" height="600" />
-    //             `)}
-                
-    //         </div>
-    //     </div>
-    // );
-    const instance = basicLightbox.create(`
-    <img src=${src} width="800" height="600">
-    `)
+export default class Modal extends Component {
 
-    instance.show()
+    render() {
+        return (
+            <div className={css.overlay}>
+                <div className={css.modal}>
+                    <img src={this.props.pic} alt="" />
+                </div>
+            </div>
+        );
+    }
 }
-
-export default Modal;
