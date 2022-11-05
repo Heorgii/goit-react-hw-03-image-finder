@@ -7,7 +7,6 @@ import ImageGallery from "./ImageGallery/ImageGallery";
 import Searchbar from "./Searchbar/Searchbar";
 import Loader from "./Loader/Loader";
 
-
 export default class App extends Component {
     state = {
     URL: 'https://pixabay.com/api/',
@@ -89,3 +88,4 @@ export default class App extends Component {
     );
   }
 }
+
