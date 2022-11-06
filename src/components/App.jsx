@@ -2,13 +2,14 @@ import { Component } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import'./styles.css'
 import Button from "./Button/Button";
 import ImageGallery from "./ImageGallery/ImageGallery";
 import Searchbar from "./Searchbar/Searchbar";
 import Loader from "./Loader/Loader";
 
 export default class App extends Component {
-    state = {
+  state = {
     URL: 'https://pixabay.com/api/',
     API_KEY: '30145762-bbea4d10537f12ddab0b4a39f',
     pictures: [],
@@ -30,8 +31,8 @@ export default class App extends Component {
         return Promise.reject(new Error('Failed to find any images'));
       })
       .then(pictures => {
-        if (!pictures.total) {
-          toast.error('Did find anything, mate');
+        if (!pictures.totalHits) {
+          toast.error('Did find anything');
         }
         const selectedProperties = pictures.hits.map(
           ({ id, largeImageURL, webformatURL }) => {
@@ -76,15 +77,16 @@ export default class App extends Component {
   render() {
     const { pictures, status, totalHits } = this.state;
     return (
-      <>
+      <div className="App">
         <Searchbar onSubmit={this.processSubmit} />
-        {pictures.length && <ImageGallery images={pictures} />}
+        {pictures && <ImageGallery images={pictures} />}
         {totalHits > pictures.length && (
           <Button onClick={this.handleLoadMore} />
         )}
         {status === 'pending' && <Loader />}
         <ToastContainer autoClose={2000} />
-      </>
+      </div >
+      
     );
   }
 }
