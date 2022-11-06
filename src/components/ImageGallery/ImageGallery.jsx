@@ -30,7 +30,7 @@ export default class ImageGallery extends Component {
     };
 
     render() {
-        const { showModal, bigPic, largeImageURL} = this.state;
+        const { showModal, bigPic} = this.state;
         return (
             <>
                 <ul className="ImageGallery" onClick={this.toggleModal}>
@@ -40,7 +40,6 @@ export default class ImageGallery extends Component {
                                 key={nanoid()}
                                 smallImgURL={img.webformatURL}
                                 id={img.id}
-                                // onClick={largeImageURL}
                             />
                         );
                     })}
