@@ -7,7 +7,8 @@ import Button from "./Button/Button";
 import ImageGallery from "./ImageGallery/ImageGallery";
 import Searchbar from "./Searchbar/Searchbar";
 import Loader from "./Loader/Loader";
-import fetchImage from "js/fetchImg";
+
+// import fetchImage from "js/fetchImg"; 
 
 export default class App extends Component {
   state = {
