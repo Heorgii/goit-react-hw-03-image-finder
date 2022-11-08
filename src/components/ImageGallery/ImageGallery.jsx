@@ -11,18 +11,12 @@ export default class ImageGallery extends Component {
         bigPic: null,
     };
 
-    componentDidMount() {
-        document.addEventListener('click', e => {
-            if (e.target.nodeName !== 'IMG') {
-                this.setState({ showModal: false });
-                return;
-            } else {
-                let picture = this.props.images.filter(obj => {
-                    return obj.id === parseInt(e.target.alt);
-                });
-                this.setState({ bigPic: picture[0].largeImageURL });
-            }
+    handleModal = (e) => {
+        let picture = this.props.images.filter(obj => {
+            return obj.id === parseInt(e.target.alt);
         });
+        this.setState({ bigPic: picture[0].largeImageURL });
+        this.toggleModal();
     }
 
     toggleModal = () => {
@@ -30,13 +24,14 @@ export default class ImageGallery extends Component {
     };
 
     render() {
-        const { showModal, bigPic} = this.state;
+        const { showModal, bigPic } = this.state;
         return (
             <>
-                <ul className="ImageGallery" onClick={this.toggleModal}>
+                <ul className="ImageGallery"  onClick={this.handleModal}>
                     {this.props.images.map(img => {
                         return (
                             <ImageGalleryItem
+                               
                                 key={nanoid()}
                                 smallImgURL={img.webformatURL}
                                 id={img.id}

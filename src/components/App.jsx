@@ -2,7 +2,7 @@ import { Component } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import'./styles.css'
+import './styles.css'
 import Button from "./Button/Button";
 import ImageGallery from "./ImageGallery/ImageGallery";
 import Searchbar from "./Searchbar/Searchbar";
@@ -52,7 +52,7 @@ export default class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.query !== prevState.query) {
-      this.setState({ status: 'pending', pictures: [], page: 1 });
+      this.setState({ status: 'pending' });
       this.fetchImg();
     }
     if (
@@ -65,7 +65,7 @@ export default class App extends Component {
   }
 
   processSubmit = query => {
-    this.setState({ query });
+    this.setState({ query, pictures: [], page: 1 });
   };
 
   handleLoadMore = () => {
@@ -86,7 +86,7 @@ export default class App extends Component {
         {status === 'pending' && <Loader />}
         <ToastContainer autoClose={2000} />
       </div >
-      
+
     );
   }
 }
