@@ -8,7 +8,7 @@ import ImageGallery from "./ImageGallery/ImageGallery";
 import Searchbar from "./Searchbar/Searchbar";
 import Loader from "./Loader/Loader";
 
-// import fetchImage from "js/fetchImg"; 
+// import fetchImage from "js/fetchImg";
 
 export default class App extends Component {
   state = {
@@ -26,9 +26,8 @@ export default class App extends Component {
     return fetch(
       `${this.state.URL}?q=${this.state.query}&page=${this.state.page}&key=${this.state.API_KEY}&image_type=photo&orientation=horizontal&per_page=12`
     )
-    //  ??
-    // return fetch(fetchImage)
-
+      //  ??
+      //  return fetchImage()
       .then(res => {
         if (res.ok) {
           return res.json();
